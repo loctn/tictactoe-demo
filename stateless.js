@@ -4,23 +4,23 @@ const STATUS_GAME_OVER = 0
 const STATUS_GAME_ON = 1
 
 const status = (board) => {
-	if (hasWon(board, 'X') || hasWon(board, 'O')) {
-		return STATUS_GAME_OVER
-	}
-	return STATUS_GAME_ON
+  if (hasWon(board, 'X') || hasWon(board, 'O')) {
+    return STATUS_GAME_OVER
+  }
+  return STATUS_GAME_ON
 }
 
 const count = (board, letter) => board
-	.reduce((sum, square) => sum + (square === letter), 0)
+  .reduce((sum, square) => sum + (square === letter), 0)
 
 const turn = (board) =>
-	count(board, 'X') > count(board, 'O') ? 'O' : 'X'
+  count(board, 'X') > count(board, 'O') ? 'O' : 'X'
 
 const hasWon = (board, letter) =>
-	['012', '345', '678', '036', '147', '258', '048', '246']
-		.some(t => t.split('')
-			.every(i => board[i] === letter)
-		)
+  ['012', '345', '678', '036', '147', '258', '048', '246']
+    .some(t => t.split('')
+      .every(i => board[i] === letter)
+    )
 
 const reset = () => new Array(9).fill('')
 
@@ -28,12 +28,12 @@ const placeAt = (board, i) => {
   if (!Number.isInteger(i) || i < 0 && i >= board.length) {
     return board
   }
-	if (status(board) === STATUS_GAME_ON) {
-		return [
-			...board.slice(0, i),
-			turn(board),
-			...board.slice(i + 1)
-		]
+  if (status(board) === STATUS_GAME_ON) {
+    return [
+      ...board.slice(0, i),
+      turn(board),
+      ...board.slice(i + 1)
+    ]
   }
   return board
 }
@@ -70,15 +70,15 @@ let board = reset()
 const $board = document.querySelector('.ttt-board')
 
 for (let i = 0; i < 9; i++) {
-	let $square = document.createElement('div')
-	$square.classList.add('ttt-square')
+  let $square = document.createElement('div')
+  $square.classList.add('ttt-square')
   $square.dataset.index = i
-	$board.append($square)
+  $board.append($square)
 }
 
 $board.addEventListener('click', (event) => {
-	const i = event.target.dataset.index
+  const i = event.target.dataset.index
   board = placeAt(board, parseInt(i))
   document.querySelectorAll('.ttt-square')[i]
-  	.innerHTML = board[i]
+    .innerHTML = board[i]
 })

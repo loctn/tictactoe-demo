@@ -1,19 +1,19 @@
 .ttt-board {
-	cursor: pointer;
-	display: flex;
-	font-size: 40px;
-	flex-wrap: wrap;
-	height: 210px;
-	width: 210px;
+  cursor: pointer;
+  display: flex;
+  font-size: 40px;
+  flex-wrap: wrap;
+  height: 210px;
+  width: 210px;
   }
-  .ttt-square {
-	border: 2px #000 solid;
-	box-sizing: border-box;
-	flex-basis: 70px;
-	height: 70px;
-	line-height: 66px;
-	text-align: center;
-  }
-  .ttt-square:hover {
-	background-color: #ddd;
-  }
+.ttt-square {
+  border: 2px #000 solid;
+  box-sizing: border-box;
+  flex-basis: 70px;
+  height: 70px;
+  line-height: 66px;
+  text-align: center;
+}
+.ttt-square:hover {
+  background-color: #ddd;
+}
